@@ -309,6 +309,7 @@ function AgendaView(element, calendar, viewName) {
 
 
 	function buildDayTableHeadHTML() {
+		var today = clearTime(new Date());
 		var headerClass = tm + "-widget-header";
 		var date;
 		var html = '';
@@ -339,8 +340,14 @@ function AgendaView(element, calendar, viewName) {
 
 		for (col=0; col<colCnt; col++) {
 			date = cellToDate(0, col);
-			html +=
-				"<th class='fc-" + dayIDs[date.getDay()] + " fc-col" + col + ' ' + headerClass + "'>" +
+
+			var thclass = "fc-" + dayIDs[date.getDay()] + " fc-col" + col + ' ' + headerClass;
+
+			if (date.getTime() == today.getTime()){
+				thclass += " fc-col-today";
+			}
+
+			html +=	"<th class='" + thclass +  "'>" +
 				htmlEscape(formatDate(date, colFormat)) +
 				"</th>";
 		}
