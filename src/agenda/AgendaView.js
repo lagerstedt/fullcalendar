@@ -348,7 +348,7 @@ function AgendaView(element, calendar, viewName) {
 			}
 
 			html +=	"<th class='" + thclass +  "'>" +
-				htmlEscape(formatDate(date, colFormat)) +
+				formatDate(date, colFormat) +
 				"</th>";
 		}
 
